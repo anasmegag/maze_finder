@@ -25,10 +25,10 @@ class Model:
         for i in range(NUMBER_OF_ROWS):
             for j in range(NUMBER_OF_COLUMNS):
                 if (i*NUMBER_OF_COLUMNS+j) not in wall:
-                    if j < NUMBER_OF_COLUMNS - 1 and (i*NUMBER_OF_COLUMNS+j+1) not in wall:
+                    if j < NUMBER_OF_COLUMNS -1 and (i*NUMBER_OF_COLUMNS+j+1) not in wall:
                         g.add_arc(i*NUMBER_OF_COLUMNS+j, i*NUMBER_OF_COLUMNS+j+1)
                         g.add_arc(i*NUMBER_OF_COLUMNS+j+1, i*NUMBER_OF_COLUMNS+j)
-                    if i < NUMBER_OF_ROWS - 1 and (i*NUMBER_OF_COLUMNS+j+NUMBER_OF_COLUMNS) not in wall:
+                    if i < NUMBER_OF_ROWS  and (i*NUMBER_OF_COLUMNS+j+NUMBER_OF_COLUMNS) not in wall:
                         g.add_arc(i*NUMBER_OF_COLUMNS+j, i*NUMBER_OF_COLUMNS+j+NUMBER_OF_COLUMNS)
                         g.add_arc(i*NUMBER_OF_COLUMNS+j+NUMBER_OF_COLUMNS, i*NUMBER_OF_COLUMNS+j)
 
