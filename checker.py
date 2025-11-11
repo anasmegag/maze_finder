@@ -12,14 +12,10 @@ class Predicat:
         path = []
         current = target
 
-        while current is not None:
+        while current !=source:
             path.append(current)
             current = predecessors.get(current)
 
         path.reverse()
-
-        # Check if the path really starts at the source
-        if path[0] != source:
-            return None  # No valid path
-
         return path
+    
