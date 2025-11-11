@@ -1,6 +1,7 @@
 # Importing pygame module
 import pygame
 from pygame.locals import *
+import solution
 
 # initiate pygame and give permission
 # to use pygame's functionality.
@@ -37,7 +38,7 @@ ending_position = (WINDOW_WIDTH - GRID_SIZE, WINDOW_HEIGHT - GRID_SIZE) # Bottom
 
 # Creating a variable which we will use to run the while loop
 run = True
-
+pt =[]
 # Creating a while loop
 while run:
     # --- 1. EVENT HANDLING ---
@@ -59,9 +60,19 @@ while run:
                 squares_positions.remove(snapped_pos)
             else:
                 squares_positions.append(snapped_pos)
+                
         elif event.type ==pygame.KEYDOWN:
-            if event.key == pygame.K_a:
-                run=False
+            if event.key == pygame.K_f:
+                sol = solution.Solution(squares_positions)
+                so= sol.getPath()
+               
+                if so is not None:
+                        pt = so
+                else:
+                        pt = []
+
+
+
             
     # --- 2. DRAWING (Inside the loop to refresh the screen) ---
     
@@ -73,7 +84,10 @@ while run:
         # Create the Rect argument: (x, y, width, height)
         rect_to_draw = (position[0], position[1], SQUARE_SIZE[0], SQUARE_SIZE[1])
         pygame.draw.rect(window, BLACK, rect_to_draw)
-
+    for s in pt:
+        x = (s % 30) * GRID_SIZE
+        y = (s // 30) * GRID_SIZE
+        pygame.draw.rect(window, (100, 200, 200), (x, y, GRID_SIZE, GRID_SIZE))
     # Draw the Starting Square (Green)
     start_rect = starting_position + SQUARE_SIZE # Concatenates (0,0) with (30,30) -> (0,0,30,30)
     pygame.draw.rect(window, START_COLOR, start_rect)
@@ -81,8 +95,12 @@ while run:
     # Draw the Ending Square (Red)
     end_rect = ending_position + SQUARE_SIZE # Concatenates (870,570) with (30,30) -> (870,570,30,30)
     pygame.draw.rect(window, END_COLOR, end_rect)
+    pygame.display.flip()
 
     # Draws the surface object to the screen.
     pygame.display.update()
+    # Dessiner le chemin
+    
+
     
 pygame.quit()

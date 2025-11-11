@@ -13,6 +13,9 @@ class Predicat:
         current = target
 
         while current !=source:
+            if current not in predecessors:
+                return None
+
             path.append(current)
             current = predecessors.get(current)
 
