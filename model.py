@@ -31,6 +31,9 @@ class Model:
                     if i < NUMBER_OF_ROWS  and (i*NUMBER_OF_COLUMNS+j+NUMBER_OF_COLUMNS) not in wall:
                         g.add_arc(i*NUMBER_OF_COLUMNS+j, i*NUMBER_OF_COLUMNS+j+NUMBER_OF_COLUMNS)
                         g.add_arc(i*NUMBER_OF_COLUMNS+j+NUMBER_OF_COLUMNS, i*NUMBER_OF_COLUMNS+j)
+        if (599-NUMBER_OF_COLUMNS) not in wall:
+            g.add_arc(599,599-NUMBER_OF_COLUMNS)
+            g.add_arc(599-NUMBER_OF_COLUMNS,599)
 
         return g
 

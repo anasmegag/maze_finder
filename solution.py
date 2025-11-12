@@ -11,6 +11,6 @@ class Solution:
         parcour = bfs.BFS(g)
         path = parcour.bfs(0)
         check = checker.Predicat()
-        solution = check.get_way(0,598,path[1],path[0])
+        solution = check.get_way(0,599,path[1],path[0])
         return solution
         
